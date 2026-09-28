@@ -1,0 +1,12 @@
+{
+  "name": "devhub-cpp",
+  "version": "1.0.0",
+  "description": "Painel de controle e orquestração de projetos C++ locais",
+  "main": "desktop/main.js",
+  "scripts": {
+    "start": "electron desktop/main.js"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7"
+  }
+}

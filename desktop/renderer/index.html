@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevHub C++</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top App Navigation / Notion Breadcrumb Header -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <div class="workspace-breadcrumb">
+        <span class="workspace-icon">⚡</span>
+        <span class="workspace-name">DevHub</span>
+        <span class="breadcrumb-separator">/</span>
+        <span class="page-crumb">Projetos C++</span>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-wrap">
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Pesquisar projetos, tags ou caminhos..." autocomplete="off" spellcheck="false">
+        <kbd class="kbd-shortcut">/</kbd>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <button class="nav-btn" id="btnSettings" title="Configurações de Ferramentas">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+        Ferramentas
+      </button>
+
+      <button class="btn-notion-blue" id="btnAddProject">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        Novo projeto
+      </button>
+    </div>
+  </header>
+
+  <!-- Document Page Flow -->
+  <div class="notion-document-layout">
+    
+    <!-- Page Header (Real Notion Document Style) -->
+    <div class="page-document-header">
+      <div class="page-icon">⚙️</div>
+      <h1 class="page-h1">Projetos C++</h1>
+      <p class="page-meta-line" id="metaSummary">Carregando projetos locais...</p>
+    </div>
+
+    <!-- Database Controls & View Tabs -->
+    <div class="database-control-bar">
+      <div class="view-tabs">
+        <button class="view-tab active" data-view="table">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+          Tabela
+        </button>
+        <button class="view-tab" data-view="cards">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Galeria
+        </button>
+      </div>
+
+      <div class="database-filters">
+        <div class="filter-pill-group">
+          <button class="filter-tag-pill active" data-cat="ALL">Todos</button>
+          <button class="filter-tag-pill" data-cat="FAV">★ Favoritos</button>
+          <button class="filter-tag-pill" data-cat="Empresa">Empresa</button>
+          <button class="filter-tag-pill" data-cat="Open Source">Open Source</button>
+          <button class="filter-tag-pill" data-cat="Estudos">Estudos</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLE VIEW (Dense, Scannable, Utilitarian) -->
+    <div class="table-view-container" id="tableViewContainer">
+      <table class="notion-table" id="projectsTable">
+        <thead>
+          <tr>
+            <th class="th-fav">★</th>
+            <th class="th-name">Nome</th>
+            <th class="th-build">Build</th>
+            <th class="th-std">Padrão</th>
+            <th class="th-cat">Categoria</th>
+            <th class="th-path">Caminho</th>
+            <th class="th-actions">Ações Rápidas</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <!-- Injected via app.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- GALLERY VIEW (Notion Card Layout) -->
+    <div class="gallery-view-container hidden" id="galleryViewContainer">
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Injected via app.js -->
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state hidden" id="emptyState">
+      <p class="empty-text">Nenhum projeto encontrado para o filtro atual.</p>
+      <button class="btn-text-blue" onclick="openAddProjectModal()">+ Adicionar pasta local</button>
+    </div>
+
+  </div>
+
+  <!-- Notion Side-Peek Drawer (Document Inspection) -->
+  <div class="side-peek-backdrop hidden" id="sidePeekBackdrop"></div>
+  <aside class="notion-side-peek" id="sidePeekDrawer">
+    <div class="side-peek-header">
+      <div class="side-peek-actions-left">
+        <button class="peek-tool-btn" id="btnCopyJson" title="Copiar caminho">Copiar caminho</button>
+      </div>
+      <div class="side-peek-actions-right">
+        <button class="peek-close-btn" id="btnClosePeek" title="Fechar (Esc)">✕</button>
+      </div>
+    </div>
+
+    <div class="side-peek-body">
+      <div class="peek-doc-icon">📁</div>
+      <input type="text" class="peek-doc-title" id="peekProjectName" spellcheck="false" placeholder="Nome do projeto">
+
+      <div class="peek-properties-table">
+        <div class="prop-row">
+          <div class="prop-key">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            Caminho
+          </div>
+          <div class="prop-value">
+            <code class="mono-path" id="peekPath">C:\dev\project</code>
+          </div>
+        </div>
+
+        <div class="prop-row">
+          <div class="prop-key">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            Build System
+          </div>
+          <div class="prop-value" id="peekBuildSystemTag">
+            <span class="notion-tag tag-orange">CMake</span>
+          </div>
+        </div>
+
+        <div class="prop-row">
+          <div class="prop-key">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            Padrão C++
+          </div>
+          <div class="prop-value" id="peekCxxStdTag">
+            <span class="notion-tag tag-blue">C++23</span>
+          </div>
+        </div>
+
+        <div class="prop-row">
+          <div class="prop-key">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            Frameworks
+          </div>
+          <div class="prop-value" id="peekFrameworks">Nenhum</div>
+        </div>
+
+        <div class="prop-row">
+          <div class="prop-key">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+            Categoria
+          </div>
+          <div class="prop-value" id="peekCategoryTag">
+            <span class="notion-tag tag-default">Empresa</span>
+          </div>
+        </div>
+
+        <div class="prop-row">
+          <div class="prop-key">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            IDE Padrão
+          </div>
+          <div class="prop-value" id="peekIde">VS Code</div>
+        </div>
+      </div>
+
+      <div class="peek-launch-bar">
+        <button class="peek-launch-btn primary" id="peekBtnIde">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Abrir na IDE
+        </button>
+        <button class="peek-launch-btn" id="peekBtnTerminal">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+          Terminal
+        </button>
+        <button class="peek-launch-btn" id="peekBtnExplorer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          Explorer
+        </button>
+      </div>
+
+      <hr class="notion-divider">
+
+      <div class="peek-doc-content">
+        <div class="scratchpad-header">
+          <span class="scratchpad-title">Notas de Compilação & Lembretes</span>
+          <span class="autosave-indicator" id="autosaveStatus">Salvo</span>
+        </div>
+        <textarea id="peekNotesTextarea" class="notion-editor-textarea" placeholder="Digite notas técnicas, comandos de build ou flags do CMake..."></textarea>
+      </div>
+
+      <div class="peek-footer-actions">
+        <button class="btn-text-danger" id="btnDeleteFromLibrary">Remover da biblioteca</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Modal: Add Project (Native OS Picker Enabled) -->
+  <div class="notion-modal-overlay hidden" id="modalAddProject">
+    <div class="notion-modal-box">
+      <div class="modal-top">
+        <h3 class="modal-heading">Adicionar Projeto Local</h3>
+        <button class="modal-x" onclick="closeModal('modalAddProject')">✕</button>
+      </div>
+      <div class="modal-inner">
+        <div class="field-block">
+          <label>Caminho da pasta</label>
+          <div class="field-row">
+            <input type="text" id="inputProjectPath" placeholder="Selecione ou cole o caminho da pasta..." autocomplete="off">
+            <button type="button" class="btn-secondary" id="btnBrowseFolder">Selecionar Pasta...</button>
+          </div>
+        </div>
+
+        <div class="field-block">
+          <label>Nome do projeto</label>
+          <input type="text" id="inputProjectName" placeholder="Preenchido a partir do diretório">
+        </div>
+
+        <div class="field-block">
+          <label>Categoria</label>
+          <select id="selectCategory" class="field-select">
+            <option value="Empresa">Empresa</option>
+            <option value="Open Source">Open Source</option>
+            <option value="Estudos">Estudos</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </div>
+
+        <div class="auto-inspect-box">
+          <div class="inspect-label">Detecção de arquivos:</div>
+          <div class="inspect-tags" id="inspectTagsPreview">
+            <span class="notion-tag tag-orange">CMake</span>
+            <span class="notion-tag tag-blue">C++20</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-bottom">
+        <button class="btn-secondary" onclick="closeModal('modalAddProject')">Cancelar</button>
+        <button class="btn-notion-blue" id="btnConfirmAdd">Cadastrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Settings -->
+  <div class="notion-modal-overlay hidden" id="modalSettings">
+    <div class="notion-modal-box">
+      <div class="modal-top">
+        <h3 class="modal-heading">Preferências de Ferramentas</h3>
+        <button class="modal-x" onclick="closeModal('modalSettings')">✕</button>
+      </div>
+      <div class="modal-inner">
+        <div class="field-block">
+          <label>IDE padrão</label>
+          <select id="prefIde" class="field-select">
+            <option value="VS Code">Visual Studio Code (code .)</option>
+            <option value="Visual Studio">Visual Studio (devenv.exe)</option>
+            <option value="CLion">CLion (clion64.exe)</option>
+            <option value="Qt Creator">Qt Creator (qtcreator.exe)</option>
+          </select>
+        </div>
+
+        <div class="field-block">
+          <label>Terminal padrão</label>
+          <select id="prefTerminal" class="field-select">
+            <option value="PowerShell">PowerShell</option>
+            <option value="Windows Terminal">Windows Terminal</option>
+            <option value="CMD">Prompt de Comando</option>
+          </select>
+        </div>
+
+        <div class="field-block">
+          <label>Arquivo de banco local</label>
+          <input type="text" value="%APPDATA%\DevHub\projects.json" readonly class="input-readonly">
+        </div>
+      </div>
+      <div class="modal-bottom">
+        <button class="btn-notion-blue" onclick="saveSettings()">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-hub" id="toastHub"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

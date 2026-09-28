@@ -1,0 +1,26 @@
+# CMake & Build Artifacts
+build/
+bin/
+out/
+cmake-build-*/
+CMakeUserPresets.json
+*.user
+
+# Dependencies
+node_modules/
+
+# Logs & Temp
+*.log
+*.tmp
+*.bak
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.suo
+*.userosv
+*.vcxproj*
+
+# OS files
+Thumbs.db
+.DS_Store

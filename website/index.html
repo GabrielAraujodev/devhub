@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevHub Workspace — Painel Central de Repositórios Locais</title>
+  <meta name="description" content="Aplicativo desktop nativo em C++20 para desenvolvedores organizarem, descobrirem e lançarem repositórios locais em C++, Rust, Python, Go e TypeScript.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav-header">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        <img src="favicon.svg" alt="DevHub" class="brand-icon" width="24" height="24">
+        DevHub
+        <span class="brand-tag">v1.1.0</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#recursos">Recursos</a></li>
+        <li><a href="#stacks">Multi-Stack</a></li>
+        <li><a href="#arquitetura">Arquitetura C++</a></li>
+        <li><a href="#instalacao">Instalação</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="downloads/DevHub-v1.1.0-win-x64.zip" class="btn-pill btn-primary" download>
+          Baixar para Windows
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow-pill">
+            <span>●</span> Release oficial v1.1.0 • Windows x64
+          </div>
+          <h1 class="hero-title">O painel central para todos os seus repositórios locais.</h1>
+          <p class="hero-subtitle">
+            Construído de forma 100% nativa em <strong>C++20</strong>. Descoberta e acionamento instantâneo para <strong>C++, Rust, Python, Go e TypeScript</strong> sem poluir suas pastas de código.
+          </p>
+
+          <div class="download-box">
+            <h2 class="download-box-title">DevHub para Windows (64-bit)</h2>
+            <p class="download-box-meta">Versão 1.1.0 • Pacote ZIP com binário nativo e script de inicialização automática (147 KB)</p>
+            
+            <div class="download-actions">
+              <a href="downloads/DevHub-v1.1.0-win-x64.zip" class="btn-pill btn-primary btn-large" download>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Baixar pacote completo (.zip)
+              </a>
+
+              <a href="downloads/DevHubCpp.exe" class="btn-pill btn-secondary" download>
+                Baixar apenas o executável avulso (.exe • 670 KB)
+              </a>
+            </div>
+
+            <div class="download-link-row">
+              <span>SHA-256: <code class="hash-badge" id="shaHash" data-hash="C0FBA7BA554078710089D01E595DC2BBCBF3CC0DD37598B9BDF23FDA7B040C12" title="Clique para copiar">c0fba7ba...7b040c12</code></span>
+              <span>Requisitos: Windows 10/11</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-aside">
+          <!-- Quick Terminal Install -->
+          <div class="code-box">
+            <div class="code-comment"># Opção 1: Executar diretamente via PowerShell</div>
+            <div class="code-keyword">git clone</div> https://github.com/GabrielAraujodev/devhub.git
+            <div class="code-keyword">cd</div> devhub
+            <div class="code-keyword">.\run.ps1</div>
+            <br>
+            <div class="code-comment"># Opção 2: Compilar a partir do código C++</div>
+            <div class="code-keyword">cmake</div> -G Ninja -S . -B build
+            <div class="code-keyword">cmake</div> --build build
+            <div class="code-keyword">.\build\DevHubCpp.exe</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- App Showcase Mockup -->
+    <section class="mockup-section">
+      <div class="container">
+        <div class="mockup-window">
+          <div class="mockup-titlebar">
+            <div class="window-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="window-title">DevHub Workspace — e:\dds</div>
+            <div style="width: 48px;"></div>
+          </div>
+
+          <div class="mockup-body">
+            <div class="mockup-main">
+              <div class="mockup-search-row">
+                <div class="mockup-search">Buscar por nome, stack, tags ou caminhos (/) ...</div>
+                <button class="btn-pill btn-primary" style="padding: 7px 16px; font-size: 12px;">+ Novo projeto</button>
+              </div>
+
+              <div class="mockup-chips">
+                <span class="mockup-chip active" data-filter="ALL">Todos</span>
+                <span class="mockup-chip" data-filter="C++">C++</span>
+                <span class="mockup-chip" data-filter="Rust">Rust</span>
+                <span class="mockup-chip" data-filter="Python">Python</span>
+                <span class="mockup-chip" data-filter="TypeScript">TypeScript</span>
+              </div>
+
+              <table class="mockup-table">
+                <thead>
+                  <tr>
+                    <th>★</th>
+                    <th>Projeto</th>
+                    <th>Stack</th>
+                    <th>Build</th>
+                    <th>Padrão</th>
+                    <th>Caminho</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-stack="C++">
+                    <td>★</td>
+                    <td><strong>dds</strong></td>
+                    <td><span class="stack-badge">C++</span></td>
+                    <td>CMake</td>
+                    <td>C++20</td>
+                    <td><code>E:\dds</code></td>
+                    <td><button class="btn-pill btn-secondary" style="padding: 3px 10px; font-size: 11px;">VS Code</button></td>
+                  </tr>
+                  <tr data-stack="C++">
+                    <td>★</td>
+                    <td><strong>graphics-render-core</strong></td>
+                    <td><span class="stack-badge">C++</span></td>
+                    <td>CMake</td>
+                    <td>C++23</td>
+                    <td><code>E:\workspace\graphics-render-core</code></td>
+                    <td><button class="btn-pill btn-secondary" style="padding: 3px 10px; font-size: 11px;">Qt Creator</button></td>
+                  </tr>
+                  <tr data-stack="Rust">
+                    <td>★</td>
+                    <td><strong>tokio-event-router</strong></td>
+                    <td><span class="stack-badge">Rust</span></td>
+                    <td>Cargo</td>
+                    <td>Rust 2021</td>
+                    <td><code>E:\workspace\tokio-event-router</code></td>
+                    <td><button class="btn-pill btn-secondary" style="padding: 3px 10px; font-size: 11px;">VS Code</button></td>
+                  </tr>
+                  <tr data-stack="Python">
+                    <td>☆</td>
+                    <td><strong>audit-ml-pipeline</strong></td>
+                    <td><span class="stack-badge">Python</span></td>
+                    <td>Poetry</td>
+                    <td>Python 3.12</td>
+                    <td><code>E:\workspace\audit-ml-pipeline</code></td>
+                    <td><button class="btn-pill btn-secondary" style="padding: 3px 10px; font-size: 11px;">VS Code</button></td>
+                  </tr>
+                  <tr data-stack="TypeScript">
+                    <td>☆</td>
+                    <td><strong>devhub-web-studio</strong></td>
+                    <td><span class="stack-badge">TypeScript</span></td>
+                    <td>npm / Vite</td>
+                    <td>ES2024</td>
+                    <td><code>E:\workspace\devhub-web-studio</code></td>
+                    <td><button class="btn-pill btn-secondary" style="padding: 3px 10px; font-size: 11px;">VS Code</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="mockup-side">
+              <h3 class="side-title">dds</h3>
+              <div class="side-meta-row">
+                <span class="side-label">Stack</span>
+                <span class="side-val">C++</span>
+              </div>
+              <div class="side-meta-row">
+                <span class="side-label">Build System</span>
+                <span class="side-val">CMake / Ninja</span>
+              </div>
+              <div class="side-meta-row">
+                <span class="side-label">Standard</span>
+                <span class="side-val">C++20</span>
+              </div>
+              <div class="side-meta-row">
+                <span class="side-label">Frameworks</span>
+                <span class="side-val">Qt6 (Core, Gui, Widgets, Sql)</span>
+              </div>
+              <div class="side-meta-row">
+                <span class="side-label">Último acesso</span>
+                <span class="side-val">Agora mesmo</span>
+              </div>
+              <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 8px;">
+                <button class="btn-pill btn-primary" style="width: 100%;">Abrir na IDE</button>
+                <button class="btn-pill btn-secondary" style="width: 100%;">Abrir no Terminal</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section" id="recursos">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Engenharia de precisão para sua máquina local.</h2>
+          <p class="section-subtitle">Projetado para eliminar o atrito de alternar entre múltiplos repositórios e linguagens.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3 class="feature-title">Descoberta em tempo real</h3>
+            <p class="feature-desc">
+              Inspeciona <code>CMakeLists.txt</code>, <code>Cargo.toml</code>, <code>pyproject.toml</code>, <code>package.json</code> e <code>go.mod</code> no disco em milissegundos sem indexações pesadas em segundo plano.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3 class="feature-title">Lançamento em 1 clique</h3>
+            <p class="feature-desc">
+              Abra qualquer projeto diretamente no VS Code, Visual Studio, Qt Creator, RustRover, PyCharm ou no terminal correto configurado para aquele repositório.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🧹</div>
+            <h3 class="feature-title">Higiene de disco & limpeza</h3>
+            <p class="feature-desc">
+              Calcula o peso exato acumulado pelas pastas <code>build/</code>, <code>out/</code> e <code>.vs/</code> e permite limpá-las com validação prévia de segurança, liberando dezenas de gigabytes no SSD.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3 class="feature-title">100% Local & Privado</h3>
+            <p class="feature-desc">
+              Seus dados pertencem ao seu computador. Todos os metadados são salvos em SQLite local em <code>%APPDATA%\DevHub\devhub.db</code>. Sem nuvem, sem login, sem telemetria invasiva.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📦</div>
+            <h3 class="feature-title">Zero poluição de pastas</h3>
+            <p class="feature-desc">
+              O DevHub não cria arquivos proprietários, pastas ocultas ou metadados invasivos dentro dos diretórios dos seus códigos-fonte. Seus repositórios Git permanecem 100% limpos.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">⌨️</div>
+            <h3 class="feature-title">Quick Switcher com teclado</h3>
+            <p class="feature-desc">
+              Pressione <code>Ctrl+K</code> a qualquer momento para abrir uma paleta flutuante e alternar entre seus projetos mais recentes sem encostar no mouse.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Polarity Flip Callout -->
+    <section class="cta-band">
+      <div class="container">
+        <h2 class="cta-title">Coloque ordem no seu ambiente de desenvolvimento.</h2>
+        <p class="cta-subtitle">Baixe o executável nativo em C++ e comece a usar em menos de 10 segundos.</p>
+        <a href="downloads/DevHub-v1.1.0-win-x64.zip" class="btn-pill" style="background-color: #ffffff; color: #000000; padding: 14px 36px; font-weight: 600; font-size: 15px;" download>
+          Baixar DevHub v1.1.0 para Windows
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-band">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">DevHub Workspace</div>
+          <p class="footer-desc">
+            Painel nativo em C++20 para gestão, orquestração e descoberta de repositórios locais multi-stack. Metodologia HOUS3 e Clean Architecture.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">PRODUTO</div>
+          <ul class="footer-col-links">
+            <li><a href="downloads/DevHub-v1.1.0-win-x64.zip" download>Download Windows (x64)</a></li>
+            <li><a href="downloads/DevHubCpp.exe" download>Executável avulso (.exe)</a></li>
+            <li><a href="#recursos">Recursos & Funcionalidades</a></li>
+            <li><a href="#instalacao">Guia de compilação</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">METODOLOGIA</div>
+          <ul class="footer-col-links">
+            <li><a href="#">Metodologia HOUS3</a></li>
+            <li><a href="#">Catálogo de 15 Funcionalidades</a></li>
+            <li><a href="#">Release MVP (39 BP)</a></li>
+            <li><a href="#">Matriz de Rastreamento</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">DESIGN SYSTEM</div>
+          <ul class="footer-col-links">
+            <li><a href="#">Uber Black-and-White Duet</a></li>
+            <li><a href="#">Pills 999px Hierarchy</a></li>
+            <li><a href="#">Zero AI Slop</a></li>
+            <li><a href="#">Engineered Restraint</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 DevHub Workspace. Software nativo de alto desempenho.</div>
+        <div>SHA-256 Verificado • Windows 64-bit</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
