@@ -1,6 +1,7 @@
 # CMake & Build Artifacts
 build/
 bin/
+dist/
 out/
 cmake-build-*/
 CMakeUserPresets.json

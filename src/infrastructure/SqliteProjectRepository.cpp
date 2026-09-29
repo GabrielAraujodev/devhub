@@ -46,6 +46,7 @@ bool SqliteProjectRepository::init() {
 
     // Migration in case table already existed without language
     q.exec("ALTER TABLE projects ADD COLUMN language TEXT DEFAULT 'C++';");
+    q.exec("ALTER TABLE projects ADD COLUMN preferred_ai_tool TEXT DEFAULT 'Claude Code';");
 
     // Purge any legacy mock seeds
     q.exec("DELETE FROM projects WHERE id IN ('proj-1', 'proj-2', 'proj-3', 'proj-4', 'proj-5', 'proj-6');");
@@ -55,7 +56,7 @@ bool SqliteProjectRepository::init() {
 
 QList<domain::Project> SqliteProjectRepository::getAll() {
     QList<domain::Project> list;
-    QSqlQuery q("SELECT id, name, path, language, build_system, cxx_standard, frameworks, category, is_favorite, preferred_ide, notes, last_accessed FROM projects ORDER BY is_favorite DESC, name ASC;");
+    QSqlQuery q("SELECT id, name, path, language, build_system, cxx_standard, frameworks, category, is_favorite, preferred_ide, notes, last_accessed, preferred_ai_tool FROM projects ORDER BY is_favorite DESC, name ASC;");
     while (q.next()) {
         domain::Project p;
         p.id = q.value(0).toString();
@@ -70,6 +71,10 @@ QList<domain::Project> SqliteProjectRepository::getAll() {
         p.preferredIde = q.value(9).toString();
         p.notes = q.value(10).toString();
         p.lastAccessed = q.value(11).toString();
+        p.preferredAiTool = q.value(12).toString();
+        if (p.preferredAiTool.isEmpty()) {
+            p.preferredAiTool = "Claude Code";
+        }
         p.isOrphan = !QFileInfo::exists(p.path);
         list.append(p);
     }
@@ -78,8 +83,8 @@ QList<domain::Project> SqliteProjectRepository::getAll() {
 
 bool SqliteProjectRepository::save(const domain::Project& p) {
     QSqlQuery q;
-    q.prepare("INSERT OR REPLACE INTO projects (id, name, path, language, build_system, cxx_standard, frameworks, category, is_favorite, preferred_ide, notes, last_accessed) "
-              "VALUES (:id, :name, :path, :lang, :build, :std, :fw, :cat, :fav, :ide, :notes, :last);");
+    q.prepare("INSERT OR REPLACE INTO projects (id, name, path, language, build_system, cxx_standard, frameworks, category, is_favorite, preferred_ide, notes, last_accessed, preferred_ai_tool) "
+              "VALUES (:id, :name, :path, :lang, :build, :std, :fw, :cat, :fav, :ide, :notes, :last, :ai);");
     q.bindValue(":id", p.id);
     q.bindValue(":name", p.name);
     q.bindValue(":path", p.path);
@@ -92,6 +97,7 @@ bool SqliteProjectRepository::save(const domain::Project& p) {
     q.bindValue(":ide", p.preferredIde);
     q.bindValue(":notes", p.notes);
     q.bindValue(":last", p.lastAccessed);
+    q.bindValue(":ai", p.preferredAiTool.isEmpty() ? "Claude Code" : p.preferredAiTool);
     return q.exec();
 }
 

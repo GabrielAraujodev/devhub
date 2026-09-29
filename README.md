@@ -19,13 +19,14 @@ Todos os artefatos de produto e engenharia estão organizados na pasta [`docs/`]
 3. **[Catálogo de Funcionalidades HOUS3](file:///e:/dds/docs/03_CATALOGO_FUNCIONALIDADES_HOUS3.md)**: Especificação completa de 15 funcionalidades no padrão do Track da HOUS3 (User Story, Contexto, Problema, Resultado Esperado, Escopo, BP e 59 RFs verificáveis).
 4. **[Matriz de Rastreamento & Plano de Release](file:///e:/dds/docs/04_MATRIZ_RASTREAMENTO_E_RELEASE_PLAN.md)**: Detalhamento da Release MVP (39 BP) e do Backlog (18 BP), quebrando cada RF em tasks de desenvolvimento e critérios de aceite de QA.
 5. **[Arquitetura de Software & Design Técnico](file:///e:/dds/docs/05_ARQUITETURA_SISTEMA_DEVHUB.md)**: Decisões arquiteturais em Clean Architecture, schema do banco relacional SQLite local e contratos de interfaces em C++ moderno.
-6. **[Design System Uber — Black-and-White Duet](file:///e:/dds/docs/06_DESIGN_SYSTEM_UBER.md)**: Diretrizes completas do design system da Uber (dueto preto e branco, pílulas de 999px como assinatura interativa, cards com raio de 16px, ausência de terceiras cores decorativas).
+6. **[Design System Uber — Black-and-White Duet](file:///e:/dds/docs/06_DESIGN_SYSTEM_UBER.md)**: Diretrizes do design system da Uber.
+7. **[Design System CamaraUX](file:///e:/dds/docs/06_DESIGN_SYSTEM_CAMARAUX.md)**: Especificação completa de tokens semânticos (Slate), contraste acessível WCAG AA, escala de espaçamento base 8px, empty states orientativos, feedback não-bloqueante (Toast) e tratamento seguro de ações destrutivas.
 
 ---
 
 ## 🖥️ Aplicativo Desktop Nativo em C++ (Windows)
 
-O **DevHub** é desenvolvido em **C++20 nativo** com **Qt 6 Widgets**, **CMake**, **Ninja** e **SQLite**, aplicando a estética **Uber Black-and-White Duet** (canvas branco `#ffffff`, âncora de conversão em preto absoluto `#000000`, botões e chips em pílula `999px`, containers em raio `16px` e tipografia funcional em sentence-case):
+O **DevHub** é desenvolvido em **C++20 nativo** com **Qt 6 Widgets**, **CMake**, **Ninja** e **SQLite**, aplicando os padrões de UI e design tokens do **Design System CamaraUX** (superfícies em Slate `#f8fafc`/`#ffffff`, contraste de texto superior a 15:1 WCAG AA, badges semânticos de linguagem, pílulas de ação, feedback não-intrusivo via Toast e estados vazios com recuperação direta):
 
 - **Arquitetura 100% C++:**
   - `src/domain/Project.hpp`: Entidade de domínio pura com metadados, stack/linguagem, tags, sistema de build e flags de favorito/órfão.
@@ -58,6 +59,21 @@ cmake --build build
 # Ou diretamente pelo executável:
 .\build\DevHubCpp.exe
 ```
+
+### 📦 Como Instalar e Distribuir em Outros Computadores
+
+Em outros computadores **não é necessário ter C++, CMake, Qt6 ou MSYS2 instalados**. Criamos um script que empacota automaticamente o binário junto a todas as DLLs e plugins necessários:
+
+1. **Gerar o pacote de distribuição portátil e instalador:**
+   ```powershell
+   .\package.ps1
+   ```
+   Isso cria a pasta autônoma em `dist\DevHub` e o arquivo ZIP `downloads\DevHub-v1.1.0-win-x64.zip`.
+
+2. **Como usar no outro computador:**
+   - **Opção Portátil:** Extraia o `.zip` em qualquer pasta (ou pendrive) e dê 2 cliques em `DevHub.exe`.
+   - **Opção Instalador:** Dê 2 cliques em `instalar.bat` para copiar automaticamente para `%LOCALAPPDATA%\Programs\DevHub` e criar atalhos na **Área de Trabalho** e no **Menu Iniciar**.
+
 
 | ID | Funcionalidade (User Story) | BP | Destino | Status |
 |:---:|---|:---:|:---:|:---:|

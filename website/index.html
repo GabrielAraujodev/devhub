@@ -1,40 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DevHub Workspace — Painel Central de Repositórios Locais</title>
-  <meta name="description" content="Aplicativo desktop nativo em C++20 para desenvolvedores organizarem, descobrirem e lançarem repositórios locais em C++, Rust, Python, Go e TypeScript.">
+  <meta name="description"
+    content="Aplicativo desktop nativo em C++20 e Qt6 para gerenciar, descobrir e orquestrar repositórios locais em C++, Rust, Python, Go e TypeScript. Padrão CamaraUX Design System.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#0f172a">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <!-- Navigation -->
   <header class="nav-header">
     <div class="container nav-container">
       <a href="#" class="brand-logo">
-        <img src="favicon.svg" alt="DevHub" class="brand-icon" width="24" height="24">
-        DevHub
+        <img src="favicon.svg" alt="DevHub" class="brand-icon" width="26" height="26">
+        <span>DevHub</span>
         <span class="brand-tag">v1.1.0</span>
       </a>
 
-      <ul class="nav-links">
-        <li><a href="#recursos">Recursos</a></li>
-        <li><a href="#stacks">Multi-Stack</a></li>
-        <li><a href="#arquitetura">Arquitetura C++</a></li>
-        <li><a href="#instalacao">Instalação</a></li>
-      </ul>
+      <nav aria-label="Navegação Principal">
+        <ul class="nav-links">
+          <li><a href="#recursos">Recursos</a></li>
+          <li><a href="#stacks">Multi-Stack</a></li>
+          <li><a href="#arquitetura">Arquitetura C++</a></li>
+          <li><a href="#instalacao">Instalação</a></li>
+          <li><a href="#demo">Preview Ao Vivo</a></li>
+        </ul>
+      </nav>
 
       <div class="nav-cta">
-        <a href="downloads/DevHub-v1.1.0-win-x64.zip" class="btn-pill btn-primary" download>
+        <button id="themeToggleBtn" class="btn btn-secondary btn-icon" title="Alternar Modo Claro / Modo Escuro"
+          aria-label="Alternar tema">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <a href="downloads/DevHub-v1.1.0-win-x64.zip" class="btn btn-primary" download>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
           Baixar para Windows
         </a>
       </div>
@@ -46,297 +64,817 @@
     <section class="hero-section">
       <div class="container hero-grid">
         <div class="hero-content">
-          <div class="eyebrow-pill">
-            <span>●</span> Release oficial v1.1.0 • Windows x64
+          <div class="eyebrow-badge">
+            <span class="status-dot"></span> Release oficial v1.1.0 • Padrão CamaraUX Design System
           </div>
-          <h1 class="hero-title">O painel central para todos os seus repositórios locais.</h1>
+          <h1 class="hero-title">O painel central de alta velocidade para todos os seus repositórios.</h1>
           <p class="hero-subtitle">
-            Construído de forma 100% nativa em <strong>C++20</strong>. Descoberta e acionamento instantâneo para <strong>C++, Rust, Python, Go e TypeScript</strong> sem poluir suas pastas de código.
+            Construído de forma 100% nativa em <strong>C++20 e Qt6</strong> com o sistema de design
+            <strong>CamaraUX</strong>. Descoberta, orquestração e acionamento instantâneo para <strong>C++, Rust,
+              Python, Go e TypeScript</strong> sem telemetria e sem poluir seus códigos.
           </p>
 
-          <div class="download-box">
-            <h2 class="download-box-title">DevHub para Windows (64-bit)</h2>
-            <p class="download-box-meta">Versão 1.1.0 • Pacote ZIP com binário nativo e script de inicialização automática (147 KB)</p>
-            
+          <div class="download-card">
+            <div class="download-card-header">
+              <div>
+                <h2 class="download-card-title">DevHub para Windows (64-bit)</h2>
+                <p class="download-card-meta">Pacote Portátil Completo • Todas as 29 DLLs e runtimes inclusos • 33.8 MB
+                </p>
+              </div>
+              <span class="badge-success">Pronto para uso</span>
+            </div>
+
             <div class="download-actions">
-              <a href="downloads/DevHub-v1.1.0-win-x64.zip" class="btn-pill btn-primary btn-large" download>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Baixar pacote completo (.zip)
+              <a href="downloads/DevHub-v1.1.0-win-x64.zip" class="btn btn-primary btn-large" download
+                id="mainDownloadBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Baixar pacote completo (.zip • 33.8 MB)
               </a>
 
-              <a href="downloads/DevHubCpp.exe" class="btn-pill btn-secondary" download>
-                Baixar apenas o executável avulso (.exe • 670 KB)
+              <a href="downloads/DevHubCpp.exe" class="btn btn-secondary" download id="exeDownloadBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+                Executável avulso (.exe • 370 KB)
               </a>
             </div>
 
-            <div class="download-link-row">
-              <span>SHA-256: <code class="hash-badge" id="shaHash" data-hash="C0FBA7BA554078710089D01E595DC2BBCBF3CC0DD37598B9BDF23FDA7B040C12" title="Clique para copiar">c0fba7ba...7b040c12</code></span>
-              <span>Requisitos: Windows 10/11</span>
+            <div class="download-security-row">
+              <div class="security-item">
+                <span class="security-label">SHA-256:</span>
+                <code class="hash-badge" id="shaHash"
+                  data-hash="FE02FB142FC8A17533B14038C6B24E7BDAB58CEB5D22C994DDABEB49ECC4B5A9"
+                  title="Clique para copiar o checksum SHA-256">
+                  fe02fb14...ecc4b5a9
+                </code>
+              </div>
+              <div class="security-item">
+                <span class="security-label">Compatibilidade:</span>
+                <span class="security-val">Windows 10 / 11 (x64)</span>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="hero-aside">
-          <!-- Quick Terminal Install -->
-          <div class="code-box">
-            <div class="code-comment"># Opção 1: Executar diretamente via PowerShell</div>
-            <div class="code-keyword">git clone</div> https://github.com/GabrielAraujodev/devhub.git
-            <div class="code-keyword">cd</div> devhub
-            <div class="code-keyword">.\run.ps1</div>
-            <br>
-            <div class="code-comment"># Opção 2: Compilar a partir do código C++</div>
-            <div class="code-keyword">cmake</div> -G Ninja -S . -B build
-            <div class="code-keyword">cmake</div> --build build
-            <div class="code-keyword">.\build\DevHubCpp.exe</div>
+          <!-- Terminal Quick Start -->
+          <div class="terminal-card">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="terminal-title">PowerShell / Instalação Rápida</span>
+              <button class="terminal-copy-btn" id="copyCmdBtn" title="Copiar comando">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>Copiar</span>
+              </button>
+            </div>
+            <pre class="terminal-body"><code><span class="code-comment"># 1. Clonar repositório e compilar nativamente</span>
+<span class="code-cmd">git clone</span> https://github.com/GabrielAraujodev/devhub.git
+<span class="code-cmd">cd</span> devhub
+
+<span class="code-comment"># 2. Executar script de compilação C++ (CMake + Ninja)</span>
+<span class="code-cmd">.\run.ps1</span>
+
+<span class="code-comment"># 3. Ou gerar o pacote portátil distribuível</span>
+<span class="code-cmd">.\package.ps1</span></code></pre>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- App Showcase Mockup -->
-    <section class="mockup-section">
+    <!-- App Showcase Mockup (CamaraUX Interface Interactive) -->
+    <section class="mockup-section" id="demo">
       <div class="container">
+        <div class="section-badge-header">
+          <span class="section-tag">CamaraUX Design System em Ação</span>
+          <h2 class="section-title">Interface projetada para desenvolvedores reais.</h2>
+          <p class="section-subtitle">Experimente a busca instantânea, filtragem por stack e inspeção detalhada
+            exatamente como na aplicação desktop.</p>
+        </div>
+
         <div class="mockup-window">
+          <!-- Titlebar -->
           <div class="mockup-titlebar">
-            <div class="window-dots">
+            <div class="mockup-window-controls">
               <span class="dot dot-red"></span>
               <span class="dot dot-yellow"></span>
               <span class="dot dot-green"></span>
             </div>
-            <div class="window-title">DevHub Workspace — e:\dds</div>
-            <div style="width: 48px;"></div>
+            <div class="mockup-window-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M9 3v18" />
+                <path d="M14 9h7" />
+                <path d="M14 15h7" />
+              </svg>
+              DevHub Workspace — E:\dds (Padrão CamaraUX)
+            </div>
+            <div class="mockup-window-badge">30 FPS Nativo</div>
           </div>
 
+          <!-- Body -->
           <div class="mockup-body">
+            <!-- Main Content Area -->
             <div class="mockup-main">
-              <div class="mockup-search-row">
-                <div class="mockup-search">Buscar por nome, stack, tags ou caminhos (/) ...</div>
-                <button class="btn-pill btn-primary" style="padding: 7px 16px; font-size: 12px;">+ Novo projeto</button>
+              <!-- Search & Quick Action Toolbar -->
+              <div class="mockup-toolbar">
+                <div class="mockup-search-container">
+                  <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <input type="text" id="mockupSearchInput" class="mockup-search-input"
+                    placeholder="Buscar por nome, stack, tags ou caminhos (/) ..." autocomplete="off">
+                  <span class="search-shortcut">Ctrl+F</span>
+                </div>
+                <button class="btn btn-primary btn-sm" id="mockupAddBtn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                  Novo projeto
+                </button>
               </div>
 
-              <div class="mockup-chips">
-                <span class="mockup-chip active" data-filter="ALL">Todos</span>
-                <span class="mockup-chip" data-filter="C++">C++</span>
-                <span class="mockup-chip" data-filter="Rust">Rust</span>
-                <span class="mockup-chip" data-filter="Python">Python</span>
-                <span class="mockup-chip" data-filter="TypeScript">TypeScript</span>
+              <!-- Filter Chips (CamaraUX Pattern 10536) -->
+              <div class="mockup-chips" id="mockupChipsContainer">
+                <button class="mockup-chip active" data-filter="ALL">Todos <span class="chip-count"
+                    id="countAll">5</span></button>
+                <button class="mockup-chip" data-filter="C++">C++ <span class="chip-count">2</span></button>
+                <button class="mockup-chip" data-filter="Rust">Rust <span class="chip-count">1</span></button>
+                <button class="mockup-chip" data-filter="Python">Python <span class="chip-count">1</span></button>
+                <button class="mockup-chip" data-filter="TypeScript">TypeScript <span
+                    class="chip-count">1</span></button>
+                <button class="mockup-chip" data-filter="Go">Go <span class="chip-count">0</span></button>
               </div>
 
-              <table class="mockup-table">
-                <thead>
-                  <tr>
-                    <th>★</th>
-                    <th>Projeto</th>
-                    <th>Stack</th>
-                    <th>Build</th>
-                    <th>Padrão</th>
-                    <th>Caminho</th>
-                    <th>Ações</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr data-stack="C++">
-                    <td>★</td>
-                    <td><strong>dds</strong></td>
-                    <td><span class="stack-badge">C++</span></td>
-                    <td>CMake</td>
-                    <td>C++20</td>
-                    <td><code>E:\dds</code></td>
-                    <td><button class="btn-pill btn-secondary" style="padding: 3px 10px; font-size: 11px;">VS Code</button></td>
-                  </tr>
-                  <tr data-stack="C++">
-                    <td>★</td>
-                    <td><strong>graphics-render-core</strong></td>
-                    <td><span class="stack-badge">C++</span></td>
-                    <td>CMake</td>
-                    <td>C++23</td>
-                    <td><code>E:\workspace\graphics-render-core</code></td>
-                    <td><button class="btn-pill btn-secondary" style="padding: 3px 10px; font-size: 11px;">Qt Creator</button></td>
-                  </tr>
-                  <tr data-stack="Rust">
-                    <td>★</td>
-                    <td><strong>tokio-event-router</strong></td>
-                    <td><span class="stack-badge">Rust</span></td>
-                    <td>Cargo</td>
-                    <td>Rust 2021</td>
-                    <td><code>E:\workspace\tokio-event-router</code></td>
-                    <td><button class="btn-pill btn-secondary" style="padding: 3px 10px; font-size: 11px;">VS Code</button></td>
-                  </tr>
-                  <tr data-stack="Python">
-                    <td>☆</td>
-                    <td><strong>audit-ml-pipeline</strong></td>
-                    <td><span class="stack-badge">Python</span></td>
-                    <td>Poetry</td>
-                    <td>Python 3.12</td>
-                    <td><code>E:\workspace\audit-ml-pipeline</code></td>
-                    <td><button class="btn-pill btn-secondary" style="padding: 3px 10px; font-size: 11px;">VS Code</button></td>
-                  </tr>
-                  <tr data-stack="TypeScript">
-                    <td>☆</td>
-                    <td><strong>devhub-web-studio</strong></td>
-                    <td><span class="stack-badge">TypeScript</span></td>
-                    <td>npm / Vite</td>
-                    <td>ES2024</td>
-                    <td><code>E:\workspace\devhub-web-studio</code></td>
-                    <td><button class="btn-pill btn-secondary" style="padding: 3px 10px; font-size: 11px;">VS Code</button></td>
-                  </tr>
-                </tbody>
-              </table>
+              <!-- Projects Data Table -->
+              <div class="mockup-table-wrapper">
+                <table class="mockup-table" id="mockupTable">
+                  <thead>
+                    <tr>
+                      <th style="width: 36px; text-align: center;">★</th>
+                      <th>Projeto</th>
+                      <th>Stack</th>
+                      <th>Build System</th>
+                      <th>Padrão</th>
+                      <th>Caminho</th>
+                      <th style="text-align: right;">Ações Rápidas</th>
+                    </tr>
+                  </thead>
+                  <tbody id="mockupTableBody">
+                    <tr class="selected-row" data-stack="C++" data-name="dds" data-ai="Claude Code"
+                      data-build="CMake / Ninja" data-standard="C++20" data-framework="Qt6 (Core, Gui, Widgets, Sql)"
+                      data-path="E:\dds"
+                      data-notes="DevHub Workspace em C++20. Arquitetura limpa, CamaraUX design system."
+                      data-date="Agora mesmo">
+                      <td class="star-cell">★</td>
+                      <td><strong>dds</strong></td>
+                      <td><span class="stack-badge stack-cpp">C++</span></td>
+                      <td>CMake</td>
+                      <td>C++20</td>
+                      <td><code class="table-path">E:\dds</code></td>
+                      <td style="text-align: right;">
+                        <button class="btn btn-secondary btn-xs action-open-ide" data-proj="dds">VS Code</button>
+                        <button class="btn btn-outline btn-xs action-copy-path" data-path="E:\dds">Copiar</button>
+                      </td>
+                    </tr>
+                    <tr data-stack="C++" data-name="graphics-render-core" data-ai="Aider" data-build="CMake"
+                      data-standard="C++23" data-framework="Vulkan, GLM, GLFW"
+                      data-path="E:\workspace\graphics-render-core"
+                      data-notes="Motor de renderização 3D em tempo real com pipelines de sombreamento Vulkan."
+                      data-date="Há 2 horas">
+                      <td class="star-cell">★</td>
+                      <td><strong>graphics-render-core</strong></td>
+                      <td><span class="stack-badge stack-cpp">C++</span></td>
+                      <td>CMake</td>
+                      <td>C++23</td>
+                      <td><code class="table-path">E:\workspace\graphics-render-core</code></td>
+                      <td style="text-align: right;">
+                        <button class="btn btn-secondary btn-xs action-open-ide" data-proj="graphics-render-core">Qt
+                          Creator</button>
+                        <button class="btn btn-outline btn-xs action-copy-path"
+                          data-path="E:\workspace\graphics-render-core">Copiar</button>
+                      </td>
+                    </tr>
+                    <tr data-stack="Rust" data-name="tokio-event-router" data-ai="Cursor" data-build="Cargo"
+                      data-standard="Rust 2021" data-framework="Tokio, Axum, Serde"
+                      data-path="E:\workspace\tokio-event-router"
+                      data-notes="Roteador assíncrono de eventos com multiplexação TCP de baixa latência."
+                      data-date="Ontem">
+                      <td class="star-cell">★</td>
+                      <td><strong>tokio-event-router</strong></td>
+                      <td><span class="stack-badge stack-rust">Rust</span></td>
+                      <td>Cargo</td>
+                      <td>Rust 2021</td>
+                      <td><code class="table-path">E:\workspace\tokio-event-router</code></td>
+                      <td style="text-align: right;">
+                        <button class="btn btn-secondary btn-xs action-open-ide" data-proj="tokio-event-router">VS
+                          Code</button>
+                        <button class="btn btn-outline btn-xs action-copy-path"
+                          data-path="E:\workspace\tokio-event-router">Copiar</button>
+                      </td>
+                    </tr>
+                    <tr data-stack="Python" data-name="audit-ml-pipeline" data-ai="Antigravity (AGY)"
+                      data-build="Poetry" data-standard="Python 3.12" data-framework="PyTorch, FastAPI, Polars"
+                      data-path="E:\workspace\audit-ml-pipeline"
+                      data-notes="Pipeline para inferência e auditoria de modelos de machine learning."
+                      data-date="Há 3 dias">
+                      <td class="star-cell">☆</td>
+                      <td><strong>audit-ml-pipeline</strong></td>
+                      <td><span class="stack-badge stack-python">Python</span></td>
+                      <td>Poetry</td>
+                      <td>Python 3.12</td>
+                      <td><code class="table-path">E:\workspace\audit-ml-pipeline</code></td>
+                      <td style="text-align: right;">
+                        <button class="btn btn-secondary btn-xs action-open-ide"
+                          data-proj="audit-ml-pipeline">PyCharm</button>
+                        <button class="btn btn-outline btn-xs action-copy-path"
+                          data-path="E:\workspace\audit-ml-pipeline">Copiar</button>
+                      </td>
+                    </tr>
+                    <tr data-stack="TypeScript" data-name="devhub-web-studio" data-ai="Claude Code"
+                      data-build="npm / Vite" data-standard="ES2024" data-framework="React 19, TypeScript, Vanilla CSS"
+                      data-path="E:\workspace\devhub-web-studio"
+                      data-notes="Portal web de documentação e catálogo estático do ecossistema DevHub."
+                      data-date="Há 5 dias">
+                      <td class="star-cell">☆</td>
+                      <td><strong>devhub-web-studio</strong></td>
+                      <td><span class="stack-badge stack-typescript">TypeScript</span></td>
+                      <td>npm / Vite</td>
+                      <td>ES2024</td>
+                      <td><code class="table-path">E:\workspace\devhub-web-studio</code></td>
+                      <td style="text-align: right;">
+                        <button class="btn btn-secondary btn-xs action-open-ide" data-proj="devhub-web-studio">VS
+                          Code</button>
+                        <button class="btn btn-outline btn-xs action-copy-path"
+                          data-path="E:\workspace\devhub-web-studio">Copiar</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <!-- CamaraUX Empty State Widget (Padrao 10865 e 10703) -->
+                <div class="camaraux-empty-state" id="mockupEmptyState" style="display: none;">
+                  <div class="empty-icon-wrap">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </div>
+                  <h4 class="empty-state-title" id="emptyTitle">Nenhum repositório encontrado</h4>
+                  <p class="empty-state-desc" id="emptyDesc">Nenhum projeto cadastrado corresponde ao filtro ou critério
+                    de busca especificado.</p>
+                  <button class="btn btn-secondary" id="emptyResetBtn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                      <path d="M3 3v5h5"></path>
+                    </svg>
+                    Limpar busca e filtros
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <div class="mockup-side">
-              <h3 class="side-title">dds</h3>
-              <div class="side-meta-row">
-                <span class="side-label">Stack</span>
-                <span class="side-val">C++</span>
+            <!-- Inspector Sidebar (CamaraUX Right Panel) -->
+            <aside class="mockup-side">
+              <div class="side-header">
+                <span class="side-tag">Inspetor de Repositório</span>
+                <h3 class="side-title" id="inspectorName">dds</h3>
+                <code class="side-path" id="inspectorPath">E:\dds</code>
               </div>
-              <div class="side-meta-row">
-                <span class="side-label">Build System</span>
-                <span class="side-val">CMake / Ninja</span>
+
+              <div class="side-meta-list">
+                <div class="side-meta-row">
+                  <span class="side-label">Linguagem / Stack</span>
+                  <span class="side-val" id="inspectorStack"><span class="stack-badge stack-cpp">C++</span></span>
+                </div>
+                <div class="side-meta-row">
+                  <span class="side-label">Sistema de Build</span>
+                  <span class="side-val" id="inspectorBuild">CMake / Ninja</span>
+                </div>
+                <div class="side-meta-row">
+                  <span class="side-label">Padrão da Linguagem</span>
+                  <span class="side-val" id="inspectorStandard">C++20</span>
+                </div>
+                <div class="side-meta-row">
+                  <span class="side-label">Agente de IA</span>
+                  <span class="side-val" id="inspectorAi"><span class="badge-ai-tool">Claude Code</span></span>
+                </div>
+                <div class="side-meta-row">
+                  <span class="side-label">Bibliotecas & Frameworks</span>
+                  <span class="side-val" id="inspectorFramework">Qt6 (Core, Gui, Widgets, Sql)</span>
+                </div>
+                <div class="side-meta-row">
+                  <span class="side-label">Último Acesso</span>
+                  <span class="side-val" id="inspectorDate">Agora mesmo</span>
+                </div>
               </div>
-              <div class="side-meta-row">
-                <span class="side-label">Standard</span>
-                <span class="side-val">C++20</span>
+
+              <div class="side-notes-box">
+                <span class="side-notes-label">Notas do Projeto:</span>
+                <p class="side-notes-content" id="inspectorNotes">DevHub Workspace em C++20. Arquitetura limpa, CamaraUX
+                  design system.</p>
               </div>
-              <div class="side-meta-row">
-                <span class="side-label">Frameworks</span>
-                <span class="side-val">Qt6 (Core, Gui, Widgets, Sql)</span>
+
+              <!-- CamaraUX Action Buttons with Semantic Hierarchy -->
+              <div class="side-actions">
+                <button class="btn btn-ai" id="inspectorBtnAi" style="width: 100%;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path>
+                    <rect x="4" y="8" width="16" height="12" rx="2"></rect>
+                    <circle cx="9" cy="13" r="1"></circle>
+                    <circle cx="15" cy="13" r="1"></circle>
+                    <line x1="9" y1="17" x2="15" y2="17"></line>
+                  </svg>
+                  🤖 Lançar Agente IA
+                </button>
+                <button class="btn btn-primary" id="inspectorBtnIde" style="width: 100%;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                  Abrir na IDE
+                </button>
+                <button class="btn btn-secondary" id="inspectorBtnTerminal" style="width: 100%;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="4 17 10 11 4 5"></polyline>
+                    <line x1="12" y1="19" x2="20" y2="19"></line>
+                  </svg>
+                  Abrir no Terminal
+                </button>
+                <button class="btn btn-outline" id="inspectorBtnCopy" style="width: 100%;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  Copiar Caminho
+                </button>
               </div>
-              <div class="side-meta-row">
-                <span class="side-label">Último acesso</span>
-                <span class="side-val">Agora mesmo</span>
-              </div>
-              <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 8px;">
-                <button class="btn-pill btn-primary" style="width: 100%;">Abrir na IDE</button>
-                <button class="btn-pill btn-secondary" style="width: 100%;">Abrir no Terminal</button>
-              </div>
-            </div>
+            </aside>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Features -->
-    <section class="features-section" id="recursos">
+    <!-- Multi-Stack Support Grid -->
+    <section class="section-container" id="stacks">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Engenharia de precisão para sua máquina local.</h2>
-          <p class="section-subtitle">Projetado para eliminar o atrito de alternar entre múltiplos repositórios e linguagens.</p>
+        <div class="section-badge-header">
+          <span class="section-tag">Detecção Automática</span>
+          <h2 class="section-title">Ecossistema Multi-Stack sem atrito.</h2>
+          <p class="section-subtitle">O DevHub inspeciona seus arquivos de manifesto locais no disco e extrai versões,
+            padrões e compiladores em milissegundos.</p>
+        </div>
+
+        <div class="stack-grid">
+          <div class="stack-card">
+            <div class="stack-card-header">
+              <span class="stack-badge stack-cpp">C++</span>
+              <span class="stack-heuristics">CMakeLists.txt • vcxproj</span>
+            </div>
+            <h3 class="stack-card-title">C++ Nativo</h3>
+            <p class="stack-card-desc">Detecção de C++17, C++20, C++23. Suporte a CMake, Ninja, MSBuild e integração
+              direta com VS Code, Visual Studio e Qt Creator.</p>
+          </div>
+
+          <div class="stack-card">
+            <div class="stack-card-header">
+              <span class="stack-badge stack-rust">Rust</span>
+              <span class="stack-heuristics">Cargo.toml</span>
+            </div>
+            <h3 class="stack-card-title">Rust & Cargo</h3>
+            <p class="stack-card-desc">Lê edições Rust 2018, 2021 e 2024. Identifica dependências Tokio, Serde e Axum.
+              Lança VS Code ou RustRover em 1 clique.</p>
+          </div>
+
+          <div class="stack-card">
+            <div class="stack-card-header">
+              <span class="stack-badge stack-python">Python</span>
+              <span class="stack-heuristics">pyproject.toml • requirements.txt</span>
+            </div>
+            <h3 class="stack-card-title">Python Moderno</h3>
+            <p class="stack-card-desc">Detecta ambientes Poetry, UV, Pipenv e Virtualenv. Dispara PyCharm ou terminal
+              com ambiente virtual pré-ativado.</p>
+          </div>
+
+          <div class="stack-card">
+            <div class="stack-card-header">
+              <span class="stack-badge stack-typescript">TypeScript / JS</span>
+              <span class="stack-heuristics">package.json • tsconfig.json</span>
+            </div>
+            <h3 class="stack-card-title">Web & Node.js</h3>
+            <p class="stack-card-desc">Mapeia scripts npm, pnpm, yarn e bun. Reconhece frameworks React, Vite, Next.js e
+              versões ECMAScript alvo.</p>
+          </div>
+
+          <div class="stack-card">
+            <div class="stack-card-header">
+              <span class="stack-badge stack-go">Go</span>
+              <span class="stack-heuristics">go.mod</span>
+            </div>
+            <h3 class="stack-card-title">Go Modules</h3>
+            <p class="stack-card-desc">Identifica versão da diretiva Go, dependências do módulo e configurações de build
+              de microsserviços.</p>
+          </div>
+
+          <div class="stack-card">
+            <div class="stack-card-header">
+              <span class="stack-badge stack-csharp">C# / .NET</span>
+              <span class="stack-heuristics">*.csproj • *.sln</span>
+            </div>
+            <h3 class="stack-card-title">.NET & C#</h3>
+            <p class="stack-card-desc">Reconhece TargetFramework (.NET 8, .NET 9) e abre soluções complexas diretamente
+              no Visual Studio ou Rider.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section-container bg-subtle" id="recursos">
+      <div class="container">
+        <div class="section-badge-header">
+          <span class="section-tag">Engenharia de Precisão</span>
+          <h2 class="section-title">Construído para quem desenvolve o dia todo.</h2>
+          <p class="section-subtitle">Projetado com obsessão em latência zero, respeito absoluto ao seu disco e clareza
+            visual impecável.</p>
         </div>
 
         <div class="feature-grid">
           <div class="feature-card">
-            <div class="feature-icon">⚡</div>
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
             <h3 class="feature-title">Descoberta em tempo real</h3>
             <p class="feature-desc">
-              Inspeciona <code>CMakeLists.txt</code>, <code>Cargo.toml</code>, <code>pyproject.toml</code>, <code>package.json</code> e <code>go.mod</code> no disco em milissegundos sem indexações pesadas em segundo plano.
+              Inspeciona <code>CMakeLists.txt</code>, <code>Cargo.toml</code> e <code>package.json</code> no disco em
+              milissegundos sem indexações pesadas que travam sua CPU.
             </p>
           </div>
 
           <div class="feature-card">
-            <div class="feature-icon">🚀</div>
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </div>
             <h3 class="feature-title">Lançamento em 1 clique</h3>
             <p class="feature-desc">
-              Abra qualquer projeto diretamente no VS Code, Visual Studio, Qt Creator, RustRover, PyCharm ou no terminal correto configurado para aquele repositório.
+              Abra qualquer projeto diretamente no VS Code, Visual Studio, Qt Creator, RustRover, PyCharm ou no terminal
+              correto configurado para aquele repositório.
             </p>
           </div>
 
           <div class="feature-card">
-            <div class="feature-icon">🧹</div>
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18"></path>
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                <line x1="10" y1="11" x2="10" y2="17"></line>
+                <line x1="14" y1="11" x2="14" y2="17"></line>
+              </svg>
+            </div>
             <h3 class="feature-title">Higiene de disco & limpeza</h3>
             <p class="feature-desc">
-              Calcula o peso exato acumulado pelas pastas <code>build/</code>, <code>out/</code> e <code>.vs/</code> e permite limpá-las com validação prévia de segurança, liberando dezenas de gigabytes no SSD.
+              Calcula o peso exato acumulado pelas pastas <code>build/</code>, <code>target/</code>, <code>out/</code> e
+              <code>node_modules/</code> com validação de segurança para liberar gigabytes no SSD.
             </p>
           </div>
 
           <div class="feature-card">
-            <div class="feature-icon">🔒</div>
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
             <h3 class="feature-title">100% Local & Privado</h3>
             <p class="feature-desc">
-              Seus dados pertencem ao seu computador. Todos os metadados são salvos em SQLite local em <code>%APPDATA%\DevHub\devhub.db</code>. Sem nuvem, sem login, sem telemetria invasiva.
+              Seus dados pertencem ao seu computador. Todos os metadados são salvos em SQLite local em
+              <code>%APPDATA%\DevHub\devhub.db</code>. Sem nuvem, sem telemetria, sem tracking.
             </p>
           </div>
 
           <div class="feature-card">
-            <div class="feature-icon">📦</div>
-            <h3 class="feature-title">Zero poluição de pastas</h3>
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">Zero poluição de código</h3>
             <p class="feature-desc">
-              O DevHub não cria arquivos proprietários, pastas ocultas ou metadados invasivos dentro dos diretórios dos seus códigos-fonte. Seus repositórios Git permanecem 100% limpos.
+              O DevHub não cria arquivos ocultos, arquivos de configuração invasivos ou metadados dentro das suas
+              árvores de repositórios. Seus commits Git permanecem imaculados.
             </p>
           </div>
 
           <div class="feature-card">
-            <div class="feature-icon">⌨️</div>
-            <h3 class="feature-title">Quick Switcher com teclado</h3>
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                <line x1="9" y1="20" x2="15" y2="20"></line>
+                <line x1="12" y1="4" x2="12" y2="20"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">Padrão CamaraUX Design System</h3>
             <p class="feature-desc">
-              Pressione <code>Ctrl+K</code> a qualquer momento para abrir uma paleta flutuante e alternar entre seus projetos mais recentes sem encostar no mouse.
+              Base matemática de espaçamento 8px, conformidade de contraste estrito WCAG AA (> 4.5:1), feedback
+              não-bloqueante por toasts e tolerância zero para becos sem saída.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path>
+                <rect x="4" y="8" width="16" height="12" rx="2"></rect>
+                <circle cx="9" cy="13" r="1"></circle>
+                <circle cx="15" cy="13" r="1"></circle>
+                <line x1="9" y1="17" x2="15" y2="17"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">Suporte Nativo a CLIs de IA</h3>
+            <p class="feature-desc">
+              Lançamento em 1 clique de <strong>Claude Code, Aider, Cursor, Antigravity (AGY) e Ollama</strong>
+              diretamente na raiz do repositório, com histórico e caminhos personalizados.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Polarity Flip Callout -->
+    <!-- Architecture & C++ Section -->
+    <section class="section-container" id="arquitetura">
+      <div class="container">
+        <div class="arch-grid">
+          <div class="arch-content">
+            <span class="section-tag">Clean Architecture Nativa</span>
+            <h2 class="section-title">Zero Electron. Zero Node no background. 100% C++20.</h2>
+            <p class="arch-desc">
+              O DevHub foi estruturado sob os princípios de Clean Architecture e separação de domínios. Uma camada de
+              Core pura em C++20, persistência com SQLite nativo via `QSqlDatabase` e UI acelerada por hardware via Qt6
+              Widgets.
+            </p>
+
+            <div class="arch-metrics">
+              <div class="metric-card">
+                <span class="metric-val">&lt; 30 ms</span>
+                <span class="metric-label">Tempo de Inicialização</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-val">~28 MB</span>
+                <span class="metric-label">Uso de RAM Típico</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-val">0%</span>
+                <span class="metric-label">Consumo de CPU ocioso</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="arch-layers">
+            <div class="layer-card">
+              <div class="layer-header">
+                <span class="layer-tag">Camada de Apresentação</span>
+                <span class="layer-tech">Qt6 Widgets • CamaraUX QSS</span>
+              </div>
+              <p class="layer-body">Renderização de alta fidelidade baseada em tokens CamaraUX com WCAG AA, tabela
+                responsiva e feedbacks não-bloqueantes.</p>
+            </div>
+
+            <div class="layer-card">
+              <div class="layer-header">
+                <span class="layer-tag">Camada de Domínio / Regras</span>
+                <span class="layer-tech">C++20 puro • STL</span>
+              </div>
+              <p class="layer-body">Entidades `Project`, analisadores de manifestos (`CMakeParser`, `CargoParser`,
+                `PackageJsonParser`) sem dependências externas.</p>
+            </div>
+
+            <div class="layer-card">
+              <div class="layer-header">
+                <span class="layer-tag">Camada de Infraestrutura</span>
+                <span class="layer-tech">SQLite 3 • QProcess • Win32 API</span>
+              </div>
+              <p class="layer-body">Persistência relacional em `%APPDATA%\DevHub\devhub.db`, escaneamento assíncrono de
+                pastas e lançamento de processos de IDEs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section class="section-container bg-subtle" id="instalacao">
+      <div class="container">
+        <div class="section-badge-header">
+          <span class="section-tag">Distribuição & Instalação</span>
+          <h2 class="section-title">Escolha como prefere rodar o DevHub.</h2>
+          <p class="section-subtitle">Pacote portátil autocontido pronto para uso ou compilação a partir do código
+            aberto.</p>
+        </div>
+
+        <div class="install-grid">
+          <!-- Option 1 -->
+          <div class="install-card highlight-card">
+            <div class="install-badge">Recomendado</div>
+            <h3 class="install-title">Pacote Portátil Completo (.zip)</h3>
+            <p class="install-desc">Ideal para uso em qualquer computador com Windows 10/11 x64. Não requer direitos de
+              administrador nem instalação prévia de runtimes.</p>
+
+            <ul class="install-features">
+              <li>✓ Inclui todas as 29 DLLs (Qt6, UCRT, GCC/MinGW)</li>
+              <li>✓ Script <code>instalar.bat</code> para criar atalhos com 1 clique</li>
+              <li>✓ Totalmente portátil em pen drive ou SSD externo</li>
+            </ul>
+
+            <a href="downloads/DevHub-v1.1.0-win-x64.zip" class="btn btn-primary" style="width: 100%;" download>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Baixar ZIP Portátil (33.8 MB)
+            </a>
+          </div>
+
+          <!-- Option 2 -->
+          <div class="install-card">
+            <div class="install-badge-subtle">Binário Leve</div>
+            <h3 class="install-title">Executável Avulso (.exe)</h3>
+            <p class="install-desc">Para computadores que já possuem o ambiente de desenvolvimento Qt6 ou o compilador
+              MinGW no PATH do sistema.</p>
+
+            <ul class="install-features">
+              <li>✓ Apenas 370 KB de download</li>
+              <li>✓ Execução ultra-rápida sem extração</li>
+              <li>✓ Ideal para desenvolvedores Qt/C++</li>
+            </ul>
+
+            <a href="downloads/DevHubCpp.exe" class="btn btn-secondary" style="width: 100%;" download>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+              Baixar DevHubCpp.exe (370 KB)
+            </a>
+          </div>
+
+          <!-- Option 3 -->
+          <div class="install-card">
+            <div class="install-badge-subtle">Código Aberto</div>
+            <h3 class="install-title">Compilar do Código-Fonte</h3>
+            <p class="install-desc">Clone o repositório Git e compile localmente com ferramentas C++ padrão do mercado.
+            </p>
+
+            <div class="install-code-box">
+              <code>git clone https://github.com/GabrielAraujodev/devhub.git<br>cd devhub<br>.\run.ps1</code>
+            </div>
+
+            <a href="https://github.com/GabrielAraujodev/devhub" target="_blank" rel="noopener noreferrer"
+              class="btn btn-outline" style="width: 100%;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                </path>
+              </svg>
+              Ver no GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Polarity Flip Callout Band -->
     <section class="cta-band">
       <div class="container">
-        <h2 class="cta-title">Coloque ordem no seu ambiente de desenvolvimento.</h2>
-        <p class="cta-subtitle">Baixe o executável nativo em C++ e comece a usar em menos de 10 segundos.</p>
-        <a href="downloads/DevHub-v1.1.0-win-x64.zip" class="btn-pill" style="background-color: #ffffff; color: #000000; padding: 14px 36px; font-weight: 600; font-size: 15px;" download>
-          Baixar DevHub v1.1.0 para Windows
-        </a>
+        <h2 class="cta-title">Coloque ordem definitiva no seu ambiente de desenvolvimento.</h2>
+        <p class="cta-subtitle">Baixe o executável nativo em C++ e organize seus repositórios em menos de 10 segundos.
+        </p>
+        <div class="cta-actions">
+          <a href="downloads/DevHub-v1.1.0-win-x64.zip" class="btn btn-cta-light" download>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Baixar DevHub v1.1.0 (Windows x64)
+          </a>
+          <a href="#demo" class="btn btn-cta-outline">
+            Testar Demonstração Interativa
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- Footer with CamaraUX Design System documentation links -->
   <footer class="footer-band">
     <div class="container">
       <div class="footer-grid">
-        <div>
-          <div class="footer-brand">DevHub Workspace</div>
+        <div class="footer-col-main">
+          <div class="footer-brand">
+            <img src="favicon.svg" alt="DevHub" class="brand-icon" width="22" height="22">
+            DevHub Workspace
+          </div>
           <p class="footer-desc">
-            Painel nativo em C++20 para gestão, orquestração e descoberta de repositórios locais multi-stack. Metodologia HOUS3 e Clean Architecture.
+            Painel nativo em C++20 para gestão, orquestração e descoberta de repositórios locais multi-stack.
+            Arquitetura limpa e CamaraUX Design System.
           </p>
+          <div class="footer-badge">CamaraUX Design System v1.1</div>
         </div>
 
         <div>
-          <div class="footer-col-title">PRODUTO</div>
+          <div class="footer-col-title">PRODUTO & DOWNLOADS</div>
           <ul class="footer-col-links">
-            <li><a href="downloads/DevHub-v1.1.0-win-x64.zip" download>Download Windows (x64)</a></li>
-            <li><a href="downloads/DevHubCpp.exe" download>Executável avulso (.exe)</a></li>
-            <li><a href="#recursos">Recursos & Funcionalidades</a></li>
-            <li><a href="#instalacao">Guia de compilação</a></li>
+            <li><a href="downloads/DevHub-v1.1.0-win-x64.zip" download>Pacote Portátil ZIP (33.8 MB)</a></li>
+            <li><a href="downloads/DevHubCpp.exe" download>Binário C++ Avulso (.exe)</a></li>
+            <li><a href="#recursos">Recursos do Sistema</a></li>
+            <li><a href="#instalacao">Guia de Instalação</a></li>
           </ul>
         </div>
 
         <div>
-          <div class="footer-col-title">METODOLOGIA</div>
+          <div class="footer-col-title">ARQUITETURA & C++</div>
           <ul class="footer-col-links">
-            <li><a href="#">Metodologia HOUS3</a></li>
-            <li><a href="#">Catálogo de 15 Funcionalidades</a></li>
-            <li><a href="#">Release MVP (39 BP)</a></li>
-            <li><a href="#">Matriz de Rastreamento</a></li>
+            <li><a href="#arquitetura">Clean Architecture C++20</a></li>
+            <li><a href="#stacks">Multi-Stack Parsers</a></li>
+            <li><a href="#">Persistência SQLite Local</a></li>
+            <li><a href="#">Zero Telemetria & Privacidade</a></li>
           </ul>
         </div>
 
         <div>
-          <div class="footer-col-title">DESIGN SYSTEM</div>
+          <div class="footer-col-title">CAMARAUX DESIGN SYSTEM</div>
           <ul class="footer-col-links">
-            <li><a href="#">Uber Black-and-White Duet</a></li>
-            <li><a href="#">Pills 999px Hierarchy</a></li>
-            <li><a href="#">Zero AI Slop</a></li>
-            <li><a href="#">Engineered Restraint</a></li>
+            <li><a href="#">Escala Matemática Base 8px</a></li>
+            <li><a href="#">Contraste Estrito WCAG AA</a></li>
+            <li><a href="#">Feedback Não-Bloqueante (Toasts)</a></li>
+            <li><a href="#">Prevenção de Beco sem Saída</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div>© 2026 DevHub Workspace. Software nativo de alto desempenho.</div>
-        <div>SHA-256 Verificado • Windows 64-bit</div>
+        <div>© 2026 DevHub Workspace • Construído com padrão de interface CamaraUX e C++20 nativo.</div>
+        <div class="footer-hash-check">Checksum SHA-256 Verificado • Windows 64-bit</div>
       </div>
     </div>
   </footer>
 
+  <!-- CamaraUX Floating Non-blocking Toast (Padrao 10687) -->
+  <div id="camarauxToast" class="camaraux-toast" role="status" aria-live="polite">
+    <div class="toast-icon" id="toastIcon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <span class="toast-message" id="toastMessage">Texto copiado para a área de transferência!</span>
+  </div>
+
   <script src="app.js"></script>
 </body>
+
 </html>

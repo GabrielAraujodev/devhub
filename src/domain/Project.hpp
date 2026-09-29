@@ -16,6 +16,7 @@ struct Project {
     QString category;        // "Empresa", "Open Source", "Estudos", "Outros"
     bool isFavorite{false};
     QString preferredIde;    // "VS Code", "Visual Studio", "CLion", "RustRover", "PyCharm"
+    QString preferredAiTool{"Claude Code"}; // "Claude Code", "Aider", "Cursor", "Antigravity", "Ollama"
     QString notes;
     QString lastAccessed;
     bool isOrphan{false};
